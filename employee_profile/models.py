@@ -25,10 +25,10 @@ class Employee(BaseModel, BaseUserTrackedModel, BaseTimestampedModel):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
     role = models.ForeignKey(Role, on_delete=models.CASCADE, null=True)
     date_of_birth = models.DateField(null=True)
-    SEX = models.TextChoices("Sex", " ".join(SEX))
-    sex = models.CharField(
-        max_length=6, choices=SEX.choices, default="MALE"
-    )
+    # SEX = models.TextChoices("Sex", " ".join(SEX))
+    # sex = models.CharField(
+    #     max_length=6, choices=SEX.choices, default="MALE"
+    # )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

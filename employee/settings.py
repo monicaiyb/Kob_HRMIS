@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
-from logging import config
 from pathlib import Path
+from decouple import config
+# from dj_database_url import parse as db_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-z=0q*%w(4q7n_e8xs!rywi#h=7*&vlqof98m*q@@3ct$wohw!z"
+SECRET_KEY = config('SECRET_KEY', default='change_in_production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'employee_profile',
-]
+    "employee",
+    "common",
+    ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
